@@ -11,7 +11,7 @@ export default function Home() {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(0);
 
-  function pop(answer) {
+  function pop(answer, type) {
     if (start === 0) {
       setStart(Date.now());
     }
@@ -34,7 +34,7 @@ export default function Home() {
       </div>
       <AnimatePresence>
         {d.map((c) => (
-          <Card key={nanoid()} pop={pop}>
+          <Card type={c.type} key={nanoid()} pop={pop}>
             {c.content}
           </Card>
         ))}
