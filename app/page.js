@@ -9,19 +9,17 @@ export default function Home() {
   const [i, setI] = useState(0);
   const [x, setX] = useState(0);
 
-  function pop(answer, type) {
+  function pop(answer) {
     setI(i + 1);
   }
 
   function onDragEnd(_, info) {
     if (info.offset.x > 0) {
-      setX(1000);
       pop(true);
       return;
     }
 
     if (info.offset.x < 0) {
-      setX(-1000);
       pop(false);
       return;
     }
@@ -31,7 +29,6 @@ export default function Home() {
     <div className="relative flex flex-col justify-center items-center w-full h-screen gradient overflow-hidden">
       <AnimatePresence>
         <motion.div
-          exit={{ x }}
           onDragEnd={onDragEnd}
           drag
           dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
